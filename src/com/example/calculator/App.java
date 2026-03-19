@@ -20,21 +20,29 @@ public class App {
 
             switch (operator){
 
-                case '+' : int plusNum = firstNum + secondNum;
+                case '+' :
+                    int plusNum = firstNum + secondNum;
                     System.out.println("결과: " + plusNum);
                     break;
 
-                case '-' : int minusNum = firstNum - secondNum;
+                case '-' :
+                    int minusNum = firstNum - secondNum;
                     System.out.println("결과: " + minusNum);
                     break;
 
-                case '*' : int multiplyNum = firstNum * secondNum;
+                case '*' :
+                    int multiplyNum = firstNum * secondNum;
                     System.out.println("결과: " + multiplyNum);
                     break;
 
-                case '/' : int divideNum = firstNum / secondNum;
+                case '/' :
+                    if (secondNum == 0){
+                    System.out.println("0으로 나눌 수 없습니다.");
+                } else {
+                    int divideNum = firstNum / secondNum;
                     System.out.println("결과: " + divideNum);
-                    break;
+                }
+                break;
 
                 default:
                     System.out.println("잘못된 연산자입니다");
