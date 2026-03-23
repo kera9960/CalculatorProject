@@ -1,11 +1,17 @@
 package com.example.calculator;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
 
         Calculator cal = new Calculator();                          // Calculator 클래스 객체 만들기
+
+        ArrayList<Integer> setResult = new ArrayList<>();
+        cal.setResultList(setResult);
+
+
         Scanner sc = new Scanner(System.in);
         String output;                                              // 전역변수 클래스변수
 
@@ -59,6 +65,39 @@ public class App {
             } catch (IllegalArgumentException e){
                 System.out.println("잘못된 연산자입니다.");
             }
+
+            int resultCheck;
+            do {
+                System.out.println("---- 메뉴 ----");
+                System.out.println("1. 결과 목록조회");
+                System.out.println("2. 가장 오래된 데이터 삭제");
+                System.out.println("3. 메뉴 종료");
+                System.out.print("메뉴를 선택하세요: ");
+                resultCheck = sc.nextInt();
+
+                switch (resultCheck) {
+
+                    case 1:
+                        System.out.println(cal.getResultList());
+                        break;
+
+                    case 2:
+                        try {
+                            cal.removeResult();
+                            System.out.println("데이터를 삭제했습니다.");
+                            System.out.println(cal.getResultList());
+                        } catch (IllegalStateException e) {
+                            System.out.println("삭제할 데이터가 없습니다.");
+                        }
+                        break;
+
+                    case 3:
+                        break;
+
+                    default:
+                        System.out.println("잘못된 입력입니다. 다시 입력하세요");
+                }
+            } while (resultCheck != 3);
 
             System.out.print("종료하려면 exit를 입력하세요. 계속하려면 아무 값이나 입력하세요.: ");
             output = sc.next();

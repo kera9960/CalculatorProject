@@ -4,9 +4,26 @@ import java.util.ArrayList;
 
 public class Calculator {
 
-    ArrayList<Integer> resultList = new ArrayList<Integer>();
+    private ArrayList<Integer> resultList = new ArrayList<Integer>();
 
-    int calculate(int firstNum, int secondNum, char operator){
+    public ArrayList<Integer> getResultList(){
+        return resultList;
+    }
+
+    public void setResultList(ArrayList<Integer> resultList){
+        this.resultList = resultList;
+    }
+
+    public void removeResult(){
+        if (resultList.isEmpty()){
+            throw new IllegalStateException("삭제할 데이터가 없습니다.");
+        }
+        resultList.remove(0);
+
+    }
+
+
+    public int calculate(int firstNum, int secondNum, char operator){
             int result;
 
             switch (operator){
