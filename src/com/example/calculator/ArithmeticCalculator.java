@@ -2,11 +2,11 @@ package com.example.calculator;
 
 import java.util.ArrayList;
 
-public class ArithmeticCalculator {
+public class ArithmeticCalculator<T extends Number> {      // 숫자 타입만 받기
 
-    private ArrayList<Integer> resultList = new ArrayList<Integer>();
+    private ArrayList<Double> resultList = new ArrayList<Double>();
 
-    public ArrayList<Integer> getResultList(){
+    public ArrayList<Double> getResultList(){
         return resultList;
     }
 
@@ -19,24 +19,24 @@ public class ArithmeticCalculator {
     }
 
 
-    public int calculate(int firstNum, int secondNum,Operator symbol){
-            int result;
+    public Double calculate(T firstNum, T secondNum,Operator symbol){
+            Double result;
 
             switch (symbol){
 
-                case PLUS: result = firstNum + secondNum;
+                case PLUS: result = firstNum.doubleValue() + secondNum.doubleValue();
                 break;
 
-                case MINUS: result = firstNum - secondNum;
+                case MINUS: result = firstNum.doubleValue() - secondNum.doubleValue();
                 break;
 
-                case MULTIPLY: result = firstNum * secondNum;
+                case MULTIPLY: result = firstNum.doubleValue() * secondNum.doubleValue();
                 break;
 
-                case DIVIDE: if (secondNum==0){
+                case DIVIDE: if (secondNum.doubleValue()==0){
                     throw new ArithmeticException("0으로 나눌 수 없습니다.");
                 } else {
-                    result = firstNum / secondNum;
+                    result = firstNum.doubleValue() / secondNum.doubleValue();
                     break;
                 }
                 default:

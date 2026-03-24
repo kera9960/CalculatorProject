@@ -5,18 +5,18 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
 
-        ArithmeticCalculator cal = new ArithmeticCalculator();                          // Calculator 클래스 객체 만들기
+        ArithmeticCalculator<Double> cal = new ArithmeticCalculator<>();                  // Calculator 클래스 객체 만들기
 
         Scanner sc = new Scanner(System.in);
         String output;
 
         do {
-            int firstNum;
+            Double firstNum;
             while (true){                                           // 검증 반복문
                 System.out.print("첫 번째 숫자를 입력하세요: ");
 
-                if (sc.hasNextInt()){                               // 정수인지 검증 boolean
-                    firstNum = sc.nextInt();
+                if (sc.hasNextDouble()){                               // 정수인지 검증 boolean
+                    firstNum = sc.nextDouble();
 
                     if (firstNum >= 0 ){                            // 양수인지 검증
                         break;
@@ -29,12 +29,12 @@ public class App {
                 }
             }
 
-            int secondNum;
+            Double secondNum;
             while (true){
                 System.out.print("두 번째 숫자를 입력하세요: ");
 
-                if (sc.hasNextInt()){
-                    secondNum = sc.nextInt();
+                if (sc.hasNextDouble()){
+                    secondNum = sc.nextDouble();
 
                     if (secondNum >= 0 ){
                         break;
@@ -53,7 +53,7 @@ public class App {
 
             try {
                 Operator symbol = Operator.Convert(operator);
-                int result = cal.calculate(firstNum,secondNum,symbol);
+                Double result = cal.calculate(firstNum,secondNum,symbol);
                 System.out.println("결과: " +result );
 
             } catch (ArithmeticException e){
