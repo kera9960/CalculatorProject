@@ -1,6 +1,8 @@
 package com.example.calculator;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ArithmeticCalculator<T extends Number> {      // 숫자 타입만 받기
 
@@ -15,9 +17,14 @@ public class ArithmeticCalculator<T extends Number> {      // 숫자 타입만 �
             throw new IllegalStateException("삭제할 데이터가 없습니다.");
         }
         resultList.remove(0);
-
     }
 
+    public List<Double> greater(Double inputNum){
+        List<Double> big = resultList.stream()
+            .filter(num -> num > inputNum)
+            .collect(Collectors.toList());
+            return big;
+    }
 
     public Double calculate(T firstNum, T secondNum,Operator symbol){
             Double result;

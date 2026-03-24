@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
 
-        ArithmeticCalculator<Double> cal = new ArithmeticCalculator<>();                  // Calculator 클래스 객체 만들기
+        ArithmeticCalculator<Double> cal = new ArithmeticCalculator<Double>();                  // Calculator 클래스 객체 만들기
 
         Scanner sc = new Scanner(System.in);
         String output;
@@ -67,7 +67,8 @@ public class App {
                 System.out.println("---- 메뉴 ----");
                 System.out.println("1. 결과 목록조회");
                 System.out.println("2. 가장 오래된 데이터 삭제");
-                System.out.println("3. 메뉴 종료");
+                System.out.println("3. 입력값보다 큰 결과 조회");
+                System.out.println("4. 메뉴 종료");
                 System.out.print("메뉴를 선택하세요: ");
                 resultCheck = sc.nextInt();
 
@@ -88,12 +89,18 @@ public class App {
                         break;
 
                     case 3:
+                        System.out.print("값을 입력하세요: ");
+                        Double inputNum = sc.nextDouble();
+                        System.out.println(cal.greater(inputNum));
+                        break;
+
+                    case 4:
                         break;
 
                     default:
                         System.out.println("잘못된 입력입니다. 다시 입력하세요");
                 }
-            } while (resultCheck != 3);
+            } while (resultCheck != 4);
 
             System.out.print("종료하려면 exit를 입력하세요. 계속하려면 아무 값이나 입력하세요.: ");
             output = sc.next();
