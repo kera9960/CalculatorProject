@@ -1,19 +1,14 @@
 package com.example.calculator;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
 
-        Calculator cal = new Calculator();                          // Calculator 클래스 객체 만들기
-
-        ArrayList<Integer> setResult = new ArrayList<>();
-        cal.setResultList(setResult);
-
+        ArithmeticCalculator cal = new ArithmeticCalculator();                          // Calculator 클래스 객체 만들기
 
         Scanner sc = new Scanner(System.in);
-        String output;                                              // 전역변수 클래스변수
+        String output;
 
         do {
             int firstNum;
@@ -57,7 +52,8 @@ public class App {
             char operator = operators.charAt(0);
 
             try {
-                int result = cal.calculate(firstNum,secondNum,operator);
+                Operator symbol = Operator.Convert(operator);
+                int result = cal.calculate(firstNum,secondNum,symbol);
                 System.out.println("결과: " +result );
 
             } catch (ArithmeticException e){

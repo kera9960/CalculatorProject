@@ -2,16 +2,12 @@ package com.example.calculator;
 
 import java.util.ArrayList;
 
-public class Calculator {
+public class ArithmeticCalculator {
 
     private ArrayList<Integer> resultList = new ArrayList<Integer>();
 
     public ArrayList<Integer> getResultList(){
         return resultList;
-    }
-
-    public void setResultList(ArrayList<Integer> resultList){
-        this.resultList = resultList;
     }
 
     public void removeResult(){
@@ -23,21 +19,21 @@ public class Calculator {
     }
 
 
-    public int calculate(int firstNum, int secondNum, char operator){
+    public int calculate(int firstNum, int secondNum,Operator symbol){
             int result;
 
-            switch (operator){
+            switch (symbol){
 
-                case '+': result = firstNum + secondNum;
+                case PLUS: result = firstNum + secondNum;
                 break;
 
-                case '-': result = firstNum - secondNum;
+                case MINUS: result = firstNum - secondNum;
                 break;
 
-                case '*': result = firstNum * secondNum;
+                case MULTIPLY: result = firstNum * secondNum;
                 break;
 
-                case '/': if (secondNum==0){
+                case DIVIDE: if (secondNum==0){
                     throw new ArithmeticException("0으로 나눌 수 없습니다.");
                 } else {
                     result = firstNum / secondNum;
