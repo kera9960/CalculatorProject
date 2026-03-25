@@ -21,8 +21,7 @@ public class App {
                     if (firstNum >= 0 ){                            // 양수인지 검증
                         break;
                     } else {
-                        System.out.println("양수를 입력하세요");
-                    }
+                        System.out.println("양수를 입력하세요");}
                 } else {
                     System.out.println("숫자를 입력하세요");
                     sc.next();                                      // sc 입력 버퍼에 남은거 소비하는 기능
@@ -35,16 +34,13 @@ public class App {
 
                 if (sc.hasNextDouble()){
                     secondNum = sc.nextDouble();
-
                     if (secondNum >= 0 ){
                         break;
                     } else {
-                        System.out.println("양수를 입력하세요");
-                    }
+                        System.out.println("양수를 입력하세요");}
                 } else {
                     System.out.println("숫자를 입력하세요");
-                    sc.next();
-                }
+                    sc.next();}
             }
 
             System.out.print("사칙연산 기호를 입력하세요 ( + , - , * , / ):  ");
@@ -68,9 +64,21 @@ public class App {
                 System.out.println("1. 결과 목록조회");
                 System.out.println("2. 가장 오래된 데이터 삭제");
                 System.out.println("3. 입력값보다 큰 결과 조회");
-                System.out.println("4. 메뉴 종료");
+                System.out.println("4. 계산 메뉴 나가기");
                 System.out.print("메뉴를 선택하세요: ");
-                resultCheck = sc.nextInt();
+                while(true){
+                    if (sc.hasNextInt()) {
+                        resultCheck = sc.nextInt();
+                        if (resultCheck >= 1 && resultCheck <= 4){
+                            break;
+                        } else {
+                            System.out.println("원하는 메뉴 번호를 숫자로 1~4중에서 선택하세요");
+                        }
+                    } else {
+                        System.out.println("정수로 1~4중에서 선택하세요");
+                        sc.next();
+                    }
+                }
 
                 switch (resultCheck) {
 
@@ -89,8 +97,17 @@ public class App {
                         break;
 
                     case 3:
-                        System.out.print("값을 입력하세요: ");
-                        Double inputNum = sc.nextDouble();
+                        Double inputNum;
+                        while (true){
+                            System.out.print("값을 입력하세요: ");
+                            if (sc.hasNextDouble()){
+                                inputNum = sc.nextDouble();
+                                break;
+                            } else {
+                                System.out.println("숫자를 입력하세요");
+                                sc.next();
+                            }
+                        }
                         System.out.println(cal.greater(inputNum));
                         break;
 
