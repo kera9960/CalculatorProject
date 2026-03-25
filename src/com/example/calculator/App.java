@@ -65,8 +65,9 @@ public class App {
                 System.out.println("2. 가장 오래된 데이터 삭제");
                 System.out.println("3. 입력값보다 큰 결과 조회");
                 System.out.println("4. 계산 메뉴 나가기");
-                System.out.print("메뉴를 선택하세요: ");
+
                 while(true){
+                    System.out.print("메뉴를 선택하세요: ");
                     if (sc.hasNextInt()) {
                         resultCheck = sc.nextInt();
                         if (resultCheck >= 1 && resultCheck <= 4){
@@ -122,7 +123,7 @@ public class App {
             System.out.print("종료하려면 exit를 입력하세요. 계속하려면 아무 값이나 입력하세요.: ");
             output = sc.next();
 
-        } while (!output.equals("exit"));
+        } while (!output.equalsIgnoreCase("exit"));
 
         sc.close();
     }
