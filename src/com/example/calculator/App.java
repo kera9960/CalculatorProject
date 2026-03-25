@@ -18,11 +18,7 @@ public class App {
 
                 if (sc.hasNextDouble()){
                     firstNum = sc.nextDouble();
-
-                    if (firstNum >= 0 ){
-                        break;
-                    } else {
-                        System.out.println("양수를 입력하세요");}
+                    break;
                 } else {
                     System.out.println("숫자를 입력하세요");
                     sc.next();
@@ -35,10 +31,7 @@ public class App {
 
                 if (sc.hasNextDouble()){
                     secondNum = sc.nextDouble();
-                    if (secondNum >= 0 ){
-                        break;
-                    } else {
-                        System.out.println("양수를 입력하세요");}
+                    break;
                 } else {
                     System.out.println("숫자를 입력하세요");
                     sc.next();}
