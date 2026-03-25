@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 
 public class ArithmeticCalculator<T extends Number> {      // 숫자 타입만 받기
 
-    private ArrayList<Double> resultList = new ArrayList<Double>();
+    private List<Double> resultList = new ArrayList<Double>();
 
-    public ArrayList<Double> getResultList(){
+    public List<Double> getResultList(){
         return resultList;
     }
 
@@ -19,11 +19,11 @@ public class ArithmeticCalculator<T extends Number> {      // 숫자 타입만 �
         resultList.remove(0);
     }
 
-    public List<Double> greater(Double inputNum){
-        List<Double> big = resultList.stream()
+    public List<Double> higher(Double inputNum){
+        List<Double> high = resultList.stream()
             .filter(num -> num > inputNum)
             .collect(Collectors.toList());
-            return big;
+            return high;
     }
 
     public Double calculate(T firstNum, T secondNum,Operator symbol){
@@ -54,5 +54,4 @@ public class ArithmeticCalculator<T extends Number> {      // 숫자 타입만 �
 
             return result;
     }
-
 }

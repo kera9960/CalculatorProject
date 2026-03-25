@@ -1,30 +1,31 @@
 package com.example.calculator;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
 
-        ArithmeticCalculator<Double> cal = new ArithmeticCalculator<Double>();                  // Calculator 클래스 객체 만들기
+        ArithmeticCalculator<Double> cal = new ArithmeticCalculator<Double>();
 
         Scanner sc = new Scanner(System.in);
         String output;
 
         do {
             Double firstNum;
-            while (true){                                           // 검증 반복문
+            while (true){
                 System.out.print("첫 번째 숫자를 입력하세요: ");
 
-                if (sc.hasNextDouble()){                               // 정수인지 검증 boolean
+                if (sc.hasNextDouble()){
                     firstNum = sc.nextDouble();
 
-                    if (firstNum >= 0 ){                            // 양수인지 검증
+                    if (firstNum >= 0 ){
                         break;
                     } else {
                         System.out.println("양수를 입력하세요");}
                 } else {
                     System.out.println("숫자를 입력하세요");
-                    sc.next();                                      // sc 입력 버퍼에 남은거 소비하는 기능
+                    sc.next();
                 }
             }
 
@@ -84,14 +85,25 @@ public class App {
                 switch (resultCheck) {
 
                     case 1:
-                        System.out.println(cal.getResultList());
+                        List<Double> viewResult = cal.getResultList();
+                        if (viewResult.isEmpty()){
+                            System.out.println("저장된 결과가 없습니다.");
+                        } else{
+
+                        System.out.println(viewResult);
+                        }
                         break;
 
                     case 2:
                         try {
                             cal.removeResult();
+                            List<Double> remainResult = cal.getResultList();
                             System.out.println("데이터를 삭제했습니다.");
-                            System.out.println(cal.getResultList());
+                            if (remainResult.isEmpty()){
+                                System.out.println("저장된 결과가 없습니다.");
+                            } else {
+                                System.out.println(remainResult);
+                            }
                         } catch (IllegalStateException e) {
                             System.out.println("삭제할 데이터가 없습니다.");
                         }
@@ -109,7 +121,12 @@ public class App {
                                 sc.next();
                             }
                         }
-                        System.out.println(cal.greater(inputNum));
+                        List<Double> higher = cal.higher(inputNum);
+                        if (higher.isEmpty()){
+                            System.out.println("입력값보다 큰 값이 없습니다.");
+                        } else {
+                        System.out.println(higher);
+                        }
                         break;
 
                     case 4:
