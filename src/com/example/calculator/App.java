@@ -7,7 +7,7 @@ public class App {
     public static void main(String[] args) {
 
         ArithmeticCalculator<Double> cal = new ArithmeticCalculator<Double>();
-
+        InputParser valid = new InputParser();
         Scanner sc = new Scanner(System.in);
         String output;
 
@@ -15,26 +15,23 @@ public class App {
             Double firstNum;
             while (true){
                 System.out.print("첫 번째 숫자를 입력하세요: ");
-
-                if (sc.hasNextDouble()){
-                    firstNum = sc.nextDouble();
+                try {
+                    firstNum = valid.toDouble(sc.nextLine());
                     break;
-                } else {
+                }catch (NumberFormatException e){
                     System.out.println("숫자를 입력하세요");
-                    sc.next();
                 }
             }
 
             Double secondNum;
             while (true){
                 System.out.print("두 번째 숫자를 입력하세요: ");
-
-                if (sc.hasNextDouble()){
-                    secondNum = sc.nextDouble();
+                try {
+                    secondNum = valid.toDouble(sc.nextLine());
                     break;
-                } else {
+                } catch (NumberFormatException e){
                     System.out.println("숫자를 입력하세요");
-                    sc.next();}
+                }
             }
 
             System.out.print("사칙연산 기호를 입력하세요 ( + , - , * , / ):  ");
@@ -62,16 +59,15 @@ public class App {
 
                 while(true){
                     System.out.print("메뉴를 선택하세요: ");
-                    if (sc.hasNextInt()) {
-                        resultCheck = sc.nextInt();
+                    try {
+                        resultCheck = valid.toInteger(sc.nextLine());
                         if (resultCheck >= 1 && resultCheck <= 4){
                             break;
-                        } else {
-                            System.out.println("원하는 메뉴 번호를 숫자로 1~4중에서 선택하세요");
+                        } else{
+                            System.out.println("1~4 사이의 정수를 입력하세요");
                         }
-                    } else {
-                        System.out.println("정수로 1~4중에서 선택하세요");
-                        sc.next();
+                    } catch (NumberFormatException e){
+                        System.out.println("정수를 입력하세요");
                     }
                 }
 
@@ -106,12 +102,11 @@ public class App {
                         Double inputNum;
                         while (true){
                             System.out.print("값을 입력하세요: ");
-                            if (sc.hasNextDouble()){
-                                inputNum = sc.nextDouble();
+                            try {
+                                inputNum = valid.toDouble(sc.nextLine());
                                 break;
-                            } else {
+                            } catch (NumberFormatException e){
                                 System.out.println("숫자를 입력하세요");
-                                sc.next();
                             }
                         }
                         List<Double> higher = cal.higher(inputNum);
