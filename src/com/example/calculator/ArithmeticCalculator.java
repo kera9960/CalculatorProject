@@ -9,7 +9,10 @@ public class ArithmeticCalculator<T extends Number> {      // 숫자 타입만 �
     private List<Double> resultList = new ArrayList<Double>();
 
     public List<Double> getResultList(){
-        return resultList;
+        List<Double> copyList = new ArrayList<>();
+        copyList.addAll(resultList);
+        return copyList;
+//        return Collections.unmodifiableList(resultList)   읽기 전용으로 만드는 Collections.unmodifiableList() 를 이용하는 것도 고려 가능(수정이 안됨)
     }
 
     public void removeResult(){
