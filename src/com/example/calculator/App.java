@@ -35,7 +35,7 @@ public class App {
             }
 
             System.out.print("사칙연산 기호를 입력하세요 ( + , - , * , / ):  ");
-            String operators = sc.next();
+            String operators = sc.nextLine();
             char operator = operators.charAt(0);
 
             try {
@@ -126,7 +126,7 @@ public class App {
             } while (resultCheck != 4);
 
             System.out.print("종료하려면 exit를 입력하세요. 계속하려면 아무 값이나 입력하세요.: ");
-            output = sc.next();
+            output = sc.nextLine();
 
         } while (!output.equalsIgnoreCase("exit"));
 
